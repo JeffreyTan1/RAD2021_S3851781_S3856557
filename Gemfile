@@ -31,6 +31,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#Support for bootstrap
+gem 'bootstrap-sass', '~> 3.4.1'
+
+#Support for jquery (used by bootstrap javascript)
+gem 'jquery-rails'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

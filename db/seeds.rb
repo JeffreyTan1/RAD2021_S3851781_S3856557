@@ -12,16 +12,16 @@ m2 = Item.create(price: 35.50, name: "Red Wool Sweater", description: "Wool swea
 image: "RedWoolSweater.jpg")
 
 m3 = Item.create(price: 30.50, name: "Green Sweater", description: "Luxurious sweater made from Nepalese cashmere.",
-image: "RedChinoPants.jpg")
+image: "GreenSweater.jpg")
 
 m4 = Item.create(price: 23.50, name: "Black Turtle Neck", description: "This turtle neck adds class to any outfit.",
-image: "RedChinoPants.jpg")
+image: "BlackTurtleNeck.jpg")
 
 m5 = Item.create(price: 75.00, name: "Blue Suit Jacket", description: "Stylish suit jacket made from Italian silk.",
-image: "RedChinoPants.jpg")
+image: "BlueSuitJacket.jpg")
 
 m6 = Item.create(price: 85.50, name: "Denim Jacket", description: "This denim jacket is perfect for casual events.",
-image: "RedChinoPants.jpg")
+image: "DenimJacket.jpg")
 
 #Women's items
 

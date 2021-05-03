@@ -1,0 +1,8 @@
+<h1>Here's an item we think you would like:</h1>
+<% @randItem.each do |item| %>
+<p><%=item.name%></p>
+<p><small>$<%=item.price%> <br> <%=item.description%></small></p>
+
+<%= image_tag(item.image, width: 200) %>
+
+<%end%>

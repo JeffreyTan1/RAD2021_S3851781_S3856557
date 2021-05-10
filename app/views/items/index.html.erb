@@ -5,12 +5,15 @@
 <table>
   <thead>
     <tr>
+<<<<<<< HEAD
       <th>Price</th>
       <th>Name</th>
       <th>Description</th>
       <th>Image</th>
       <th>Popularity</th>
       <th>Collection</th>
+=======
+>>>>>>> 0fa55d26c19cc9f18940f17690863f2ac885da78
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +27,7 @@
         <td><%= item.image %></td>
         <td><%= item.popularity %></td>
         <td><%= item.collection %></td>
+
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

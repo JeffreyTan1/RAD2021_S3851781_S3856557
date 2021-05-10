@@ -17,6 +17,9 @@ class HomepageController < ApplicationController
     if @assoc.save 
       redirect_to root_path, notice: 'Added' + @item.name + 'to savelist'
     end
+
+    @randItem = Item.limit(1).offset(randNum)
+    # @randItem = Item.limit(1).offset(randNum)
     
   end
   

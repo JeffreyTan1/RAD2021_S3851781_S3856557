@@ -1,6 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <%= link_to 'Clothic App', root_path, class:"navbar-brand" %>
+      <% if logged_in? %>
+        <%= "Hello #{current_user.name}!" %>
+        <%= link_to 'Logout', session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Sign Up', new_user_path %>
+        <%= link_to 'Log In', new_session_path %>
+      <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,17 +15,24 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
        
         <li class="nav-item">
-          <a class="nav-link" href="#">New Arrivals</a>
+          <%= link_to 'New Arrivals', '/New Arrivals', class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Womens</a>
+          <%= link_to 'Womens', '/Womens', class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Mens</a>
+          <%= link_to 'Mens', '/Mens', class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Kids</a>
+          <%= link_to 'Kids', '/Kids', class:"nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Saved List', '/saved_lists', class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Shopping bag', '/saved_lists', class:"nav-link" %>
+        </li>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown

@@ -1,8 +1,41 @@
-<h1>Here's an item we think you would like:</h1>
-<% @randItem.each do |item| %>
-<p><%=item.name%></p>
-<p><small>$<%=item.price%> <br> <%=item.description%></small></p>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
 
-<%= image_tag(item.image, width: 200) %>
+<%# To render root homepage %>
+<%if !@randItem.nil?%>
+    
+    <h1>Here's an item we think you would like:</h1>
+        <% @randItem.each do |item| %>
+        <div class = "card">
+            <p><%=item.name%> <br>
+            <small>$<%=item.price%> <br> <%=item.description%></small></p>
+            <%= image_tag(item.image, width: 200) %>
+            <%= link_to 'Add to saved list', method: :post %>
+        </div>
+        <%end%>
+    
+    
+        <h1>Popular items in our shop:</h1>
+        <% @popItems.each do |item| %>
+            <div class = "card">
+                <p><%=item.name%> <br>
+                <small>$<%=item.price%> <br> <%=item.description%></small></p>
+                <%= image_tag(item.image, width: 200) %>
+            </div>
+        <%end%>
+<%end%>
 
+<%# To render a collection %>
+<%if !@items.nil?%>
+        <h1><%=@collection%></h1>
+        <% @items.each do |item| %>
+            <div class = "card">
+                <p><%=item.name%> <br>
+                <small>$<%=item.price%> <br> <%=item.description%></small></p>
+                <%= image_tag(item.image, width: 200) %>
+            </div>
+        <%end%>
 <%end%>

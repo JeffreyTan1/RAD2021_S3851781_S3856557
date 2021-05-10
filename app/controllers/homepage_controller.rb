@@ -1,6 +1,7 @@
 class HomepageController < ApplicationController
   def show
     @randItem = Item.limit(1).offset(randNum)
+    # @randItem = Item.limit(1).offset(randNum)
     
   end
   

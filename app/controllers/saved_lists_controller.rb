@@ -8,6 +8,7 @@ class SavedListsController < ApplicationController
 
   # GET /saved_lists/1 or /saved_lists/1.json
   def show
+    @items = @saved_list.items
   end
 
   # GET /saved_lists/new
@@ -18,8 +19,19 @@ class SavedListsController < ApplicationController
   # GET /saved_lists/1/edit
   def edit
   end
-
-
+  
+  def addToList
+    item = Item.find_by(id: params[:id])
+    
+    puts item.name
+    
+    user = current_user
+    savedList = user.saved_list
+    savedList.items << item unless savedList.items.include?(item)
+    
+    
+  end
+  
   # POST /saved_lists or /saved_lists.json
   def create
     @saved_list = SavedList.new(saved_list_params)
@@ -60,7 +72,8 @@ class SavedListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_saved_list
-      @saved_list = SavedList.find(params[:id])
+      user = User.find_by(id: params[:id])
+      @saved_list = user.saved_list
     end
 
     # Only allow a list of trusted parameters through.

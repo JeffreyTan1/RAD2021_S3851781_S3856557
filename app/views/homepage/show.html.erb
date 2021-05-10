@@ -13,7 +13,7 @@
             <p><%=item.name%> <br>
             <small>$<%=item.price%> <br> <%=item.description%></small></p>
             <%= image_tag(item.image, width: 200) %>
-            <%= link_to 'Add to saved list', method: :post %>
+            <%= link_to 'Add to saved list', "/save/#{item.id}", method: :post %>
         </div>
         <%end%>
     

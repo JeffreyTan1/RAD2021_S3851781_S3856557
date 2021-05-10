@@ -10,12 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210509114706) do
-
-  create_table "Items_SavedLists", id: false, force: :cascade do |t|
-    t.integer "SavedList_id", null: false
-    t.integer "Item_id", null: false
-  end
+ActiveRecord::Schema.define(version: 20210510061035) do
 
   create_table "items", force: :cascade do |t|
     t.integer "saved_list_id"
@@ -28,6 +23,11 @@ ActiveRecord::Schema.define(version: 20210509114706) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["saved_list_id"], name: "index_items_on_saved_list_id"
+  end
+
+  create_table "items_saved_lists", id: false, force: :cascade do |t|
+    t.integer "saved_list_id", null: false
+    t.integer "item_id", null: false
   end
 
   create_table "saved_lists", force: :cascade do |t|

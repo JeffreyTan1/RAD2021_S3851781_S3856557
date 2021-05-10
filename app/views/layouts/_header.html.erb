@@ -26,13 +26,14 @@
         <li class="nav-item">
           <%= link_to 'Kids', '/Kids', class:"nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Saved List', '/saved_lists', class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Shopping bag', '/saved_lists', class:"nav-link" %>
-        </li>
-        
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to 'Saved List', "saved_list/#{current_user.id}", class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Shopping bag', '/saved_lists', class:"nav-link" %>
+          </li>
+        <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown

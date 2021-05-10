@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   
   root 'homepage#show'
   get '/:col', to: 'homepage#show'
-  post '/', to: 'homepage#addToList'
+  post '/save/:id', to: 'saved_lists#addToList'
+  
+  get '/saved_list/:id', to: 'saved_lists#show'
   
 end

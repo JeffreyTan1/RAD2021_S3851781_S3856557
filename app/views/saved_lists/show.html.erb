@@ -1,4 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_saved_list_path(@saved_list) %> |
-<%= link_to 'Back', saved_lists_path %>
+<%if !@items.nil?%>
+        <h1><%=@collection%></h1>
+        <% @items.each do |item| %>
+            <div class = "card">
+                <p><%=item.name%> <br>
+                <small>$<%=item.price%> <br> <%=item.description%></small></p>
+                <%= image_tag(item.image, width: 200) %>
+            </div>
+        <%end%>
+<%end%>
+

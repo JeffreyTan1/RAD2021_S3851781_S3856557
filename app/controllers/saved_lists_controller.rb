@@ -23,13 +23,17 @@ class SavedListsController < ApplicationController
   def addToList
     item = Item.find_by(id: params[:id])
     
-    puts item.name
-    
     user = current_user
     savedList = user.saved_list
     savedList.items << item unless savedList.items.include?(item)
-    
-    
+  end
+  
+  def removeFromList
+    item = Item.find_by(id: params[:id])
+    user = current_user
+    savedList = user.saved_list
+    savedList.items.destroy(item)
+    redirect_to show_user_saved_list_path(:id => current_user.id)
   end
   
   # POST /saved_lists or /saved_lists.json

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :bags
   resources :saved_lists
   get 'session/new', to: 'sessions#new'
   post 'session/new', to: 'sessions#create'
@@ -20,8 +21,16 @@ Rails.application.routes.draw do
   
   root 'homepage#show'
   get '/:col', to: 'homepage#show'
-  post '/save/:id', to: 'saved_lists#addToList'
   
-  get '/saved_list/:id', to: 'saved_lists#show'
+  post '/toSList/:id', to: 'saved_lists#addToList', as: 'add_to_saved_list'
+  post '/toBag/:id', to: 'bags#addToList', as: 'add_to_bag'
+  
+  post '/removeSL/:id', to: 'saved_lists#removeFromList', as: 'remv_from_saved_list'
+  post '/removeB/:id', to: 'bags#removeFromList', as: 'remv_from_bag'
+  
+  post '/checkout/:id', to: 'bags#checkout', as: 'checkout_bag'
+  
+  get '/saved_list/:id', to: 'saved_lists#show', as: 'show_user_saved_list'
+  get '/bag/:id', to: 'bags#show', as: 'show_user_bag'
   
 end

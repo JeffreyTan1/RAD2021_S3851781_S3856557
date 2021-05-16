@@ -7,8 +7,10 @@ Rails.application.routes.draw do
 
 
 
-  get 'search/searchpage'
   get '/search' => 'pages#search', :as => 'search_page'
+  post '/test' => 'mailtest#mailtest', :as => 'mailtestPOST'
+  get '/test' => 'mailtest#mailtest', :as => 'mailtest'
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

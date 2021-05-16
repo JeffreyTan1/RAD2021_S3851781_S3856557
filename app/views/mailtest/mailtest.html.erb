@@ -1,0 +1,9 @@
+<%= form_tag(mailtest_url, :method => "post",   
+    class: 'email class') do %>  
+        <div class="input-group">  
+            <%= email_field_tag :emailDest, params[:emailDest], placeholder: "email", class: "form-control" %>  
+        <div class="input-group-btn">  
+            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-envelope',:name => nil%>  
+        </div>  
+    </div>  
+<% end %>

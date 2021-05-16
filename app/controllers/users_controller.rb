@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+ 
    def new
     @user = User.new
   end
@@ -12,6 +13,9 @@ class UsersController < ApplicationController
         #creates a saved list for the user
         @saved_list = SavedList.new({user_id: @user.id})
         @saved_list.save
+        #creates a bag for the user
+        @bag = Bag.new({user_id: @user.id})
+        @bag.save
       else
         render :new
       end

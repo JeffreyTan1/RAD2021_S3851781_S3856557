@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <%= link_to 'Clothic App', root_path, class:"navbar-brand" %>
       <% if logged_in? %>
-        <%= "Hello #{current_user.name}!" %>
+        <div class="hello-user"><%= "Hello #{current_user.name}!"%></div>
         <%= link_to 'Logout', session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign Up', new_user_path %>
@@ -26,13 +26,14 @@
         <li class="nav-item">
           <%= link_to 'Kids', '/Kids', class:"nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Saved List', '/saved_lists', class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Shopping bag', '/saved_lists', class:"nav-link" %>
-        </li>
-        
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to 'Saved List', show_user_saved_list_path(:id => current_user.id), class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Shopping bag', show_user_bag_path(:id => current_user.id), class:"nav-link" %>
+          </li>
+        <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown

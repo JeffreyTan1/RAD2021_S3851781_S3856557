@@ -31,4 +31,10 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password)
   end
+  
+  def getGravatarURL
+    email_address = params[:email].downcase
+    hash = Digest::MD5.hexdigest(email_address)
+    return image_src = "https://www.gravatar.com/avatar/#{hash}"
+  end
 end

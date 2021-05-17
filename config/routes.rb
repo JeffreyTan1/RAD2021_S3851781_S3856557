@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
 
   get '/search' => 'pages#search', :as => 'search_page'
-  post '/test' => 'mailtest#mailtest', :as => 'mailtestPOST'
-  get '/test' => 'mailtest#mailtest', :as => 'mailtest'
+  post '/newsletter' => 'mailtest#mailtest', :as => 'mailtestPOST'
+  get '/newsletter' => 'mailtest#mailtest', :as => 'mailtest'
   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   
   
   root 'homepage#show'
+  #post '/', to: 'homepage#show' # OH GOD IS THIS HORRIBLE
   get '/:col', to: 'homepage#show'
   
   post '/toSList/:id', to: 'saved_lists#addToList', as: 'add_to_saved_list'

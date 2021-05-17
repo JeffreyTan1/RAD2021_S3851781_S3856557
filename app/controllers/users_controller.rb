@@ -5,24 +5,25 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    begin
-      if @user.save
-        redirect_to root_path, notice: 'You have successfully created an account!'
-        puts @user.id
-        #creates a saved list for the user
-        @saved_list = SavedList.new({user_id: @user.id})
-        @saved_list.save
-        #creates a bag for the user
-        @bag = Bag.new({user_id: @user.id})
-        @bag.save
-      else
-        render :new
-      end
-    rescue ActiveRecord::RecordNotUnique
-      redirect_to new_user_path, notice: 'This email is already being used!'
+    if :password != :confirm_password
+      
+        @user = User.new(user_params)
+        if @user.save
+          redirect_to root_path, notice: 'You have successfully created an account!'
+          puts @user.id
+          #creates a saved list for the user
+          @saved_list = SavedList.new({user_id: @user.id})
+          @saved_list.save
+          #creates a bag for the user
+          @bag = Bag.new({user_id: @user.id})
+          @bag.save
+        else
+          render :new
+        end
+      
+    else
+      redirect_to new_user_path, notice: 'Passwords did not match'
     end
-    
   end
 
   private

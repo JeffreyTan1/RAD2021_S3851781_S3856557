@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Image:</strong>
+  <%= image_tag(@item.image, width: 200) %>
+</p>
+
+
+<p>
   <strong>Price:</strong>
   <%= @item.price %>
 </p>
@@ -15,10 +21,6 @@
   <%= @item.description %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @item.image %>
-</p>
 
 <p>
   <strong>Popularity:</strong>
@@ -29,6 +31,33 @@
   <strong>Collection:</strong>
   <%= @item.collection %>
 </p>
+
+<%= form_with url: add_to_bag_path(:id => @item.id), method: :post do |f| %>
+<p>
+    <b>Size</b><br />
+    <%= f.radio_button :size, 'Large' %> Large<br />
+    <%= f.radio_button :size, 'Medium' %> Medium<br />
+    <%= f.radio_button :size, 'Small' %> Small<br />
+</p>
+
+<p>
+    <b>Color</b><br />
+    <%= f.radio_button :color, 'Red' %> Red<br />
+    <%= f.radio_button :color, 'Green' %> Green<br />
+    <%= f.radio_button :color, 'Blue' %> Blue<br />
+</p>
+<p>
+    <b>Quantity</b><br />
+    <%= f.select :quantity, options_for_select(0..10) %>
+</p>
+
+  <%= f.submit "Add to bag" %>
+
+<% end %>
+
+
+<%= link_to 'Add to bag', add_to_bag_path(:id => @item.id), method: :post %>
+<br><br>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

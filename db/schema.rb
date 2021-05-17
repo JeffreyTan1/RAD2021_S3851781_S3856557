@@ -10,20 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210511132224) do
+ActiveRecord::Schema.define(version: 20210517010000) do
+
+  create_table "bag_items", force: :cascade do |t|
+    t.string "color"
+    t.string "size"
+    t.integer "quantity"
+    t.integer "bag_id"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bag_id"], name: "index_bag_items_on_bag_id"
+    t.index ["item_id"], name: "index_bag_items_on_item_id"
+  end
 
   create_table "bags", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_bags_on_user_id"
-  end
-
-  create_table "bags_items", id: false, force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "bag_id"
-    t.index ["bag_id"], name: "index_bags_items_on_bag_id"
-    t.index ["item_id"], name: "index_bags_items_on_item_id"
   end
 
   create_table "items", force: :cascade do |t|

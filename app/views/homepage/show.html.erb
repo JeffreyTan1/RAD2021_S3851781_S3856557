@@ -10,7 +10,7 @@
     <h1>Here's an item we think you would like:</h1>
         <% @randItem.each do |item| %>
         <div class = "card">
-            <p><%=item.name%> <br>
+            <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
             <small>$<%=item.price%> <br> <%=item.description%></small></p>
             <%= image_tag(item.image, width: 200) %>
             <%= link_to 'Add to saved list', add_to_saved_list_path(:id => item.id), method: :post %>
@@ -21,7 +21,7 @@
         <h1>Popular items in our shop:</h1>
         <% @popItems.each do |item| %>
             <div class = "card">
-                <p><%=item.name%> <br>
+                <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
                 <small>$<%=item.price%> <br> <%=item.description%></small></p>
                 <%= image_tag(item.image, width: 200) %>
                 <%= link_to 'Add to saved list', add_to_saved_list_path(:id => item.id), method: :post %>
@@ -34,7 +34,7 @@
         <h1><%=@collection%></h1>
         <% @items.each do |item| %>
             <div class = "card">
-                <p><%=item.name%> <br>
+                <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
                 <small>$<%=item.price%> <br> <%=item.description%></small></p>
                 <%= image_tag(item.image, width: 200) %>
                 <%= link_to 'Add to saved list', add_to_saved_list_path(:id => item.id), method: :post %>

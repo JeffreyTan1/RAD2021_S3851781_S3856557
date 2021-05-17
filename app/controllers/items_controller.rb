@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   # GET /items/1 or /items/1.json
   def show
   end
-
+  
   # GET /items/new
   def new
     @item = Item.new

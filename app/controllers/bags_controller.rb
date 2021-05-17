@@ -8,6 +8,8 @@ class BagsController < ApplicationController
 
   # GET /bags/1 or /bags/1.json
   def show
+    @total_items = 0;
+    @uniq_items = 0;
     @items = @bag.items
     @price = 0.00
     @bag_items = @bag.bag_items
@@ -15,6 +17,8 @@ class BagsController < ApplicationController
     @bag_items.each do |i|
       item = Item.find(i.item_id)
       @price = @price + i.quantity * item.price
+      @total_items = @total_items + i.quantity
+      @uniq_items = @uniq_items + 1
     end
   end
 

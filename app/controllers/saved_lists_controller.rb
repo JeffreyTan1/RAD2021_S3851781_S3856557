@@ -8,7 +8,11 @@ class SavedListsController < ApplicationController
 
   # GET /saved_lists/1 or /saved_lists/1.json
   def show
-    @items = @saved_list.items
+    if current_user 
+      @items = @saved_list.items
+    else
+      redirect_to new_session_path
+    end
   end
 
   # GET /saved_lists/new
@@ -21,11 +25,16 @@ class SavedListsController < ApplicationController
   end
   
   def addToList
-    item = Item.find_by(id: params[:id])
+    if current_user 
+      item = Item.find_by(id: params[:id])
+      user = current_user
+      savedList = user.saved_list
+      savedList.items << item unless savedList.items.include?(item)
+      redirect_to root_path
+    else
+      redirect_to new_session_path
+    end
     
-    user = current_user
-    savedList = user.saved_list
-    savedList.items << item unless savedList.items.include?(item)
   end
   
   def removeFromList

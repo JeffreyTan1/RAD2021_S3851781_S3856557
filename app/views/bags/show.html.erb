@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<p>You currently have <%=@total_items%> total items and <%=@uniq_items%> types of items.</p>
+
 <%if !@items.nil?%>
-        <h1><%=@collection%></h1>
+        <h1>Your bag</h1>
         <% @items.each do |item| %>
             <% @bag_items.each do |bag_item| %>
                 <div class = "card">
                     <p><%=item.name%> <br>
                     <small>$<%=item.price%> <br> <%=item.description%></small></p>
                     <%= image_tag(item.image, width: 200) %> <br>
-                    Size: <%=bag_item.size%> <br> Color: <%=item.description%> <br>
+                    Size: <%=bag_item.size%> <br> Color: <%=bag_item.color%> <br>
                     Quantity: <%=bag_item.quantity%>
                     </small>
                     </p>

@@ -12,8 +12,8 @@
         <div class = "card">
             <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
             <small>$<%=item.price%> <br> <%=item.description%></small></p>
+            <%= button_to '+', add_to_saved_list_path(:id => item.id), method: :post %>
             <%= image_tag(item.image, width: 200) %>
-            <%= link_to 'Add to saved list', add_to_saved_list_path(:id => item.id), method: :post %>
         </div>
         <%end%>
     
@@ -23,8 +23,8 @@
             <div class = "card">
                 <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
                 <small>$<%=item.price%> <br> <%=item.description%></small></p>
+                 <%= button_to '+', add_to_saved_list_path(:id => item.id), method: :post %>
                 <%= image_tag(item.image, width: 200) %>
-                <%= link_to 'Add to saved list', add_to_saved_list_path(:id => item.id), method: :post %>
             </div>
         <%end%>
 <%end%>
@@ -36,8 +36,8 @@
             <div class = "card">
                 <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
                 <small>$<%=item.price%> <br> <%=item.description%></small></p>
+                 <%= button_to '+', add_to_saved_list_path(:id => item.id), method: :post %>
                 <%= image_tag(item.image, width: 200) %>
-                <%= link_to 'Add to saved list', add_to_saved_list_path(:id => item.id), method: :post %>
             </div>
         <%end%>
 <%end%>

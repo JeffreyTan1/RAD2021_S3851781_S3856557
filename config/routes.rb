@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   
   
   root 'homepage#show'
-  get '/:col', to: 'homepage#show'
+  get '/collection/:col', to: 'homepage#show', as: 'show_page'
+  get '/HelpAndSupport', to: 'homepage#helpAndSupp', as: 'help_and_support'
   
   post '/toSList/:id', to: 'saved_lists#addToList', as: 'add_to_saved_list'
   post '/toBag/:id', to: 'bag_items#addToList', as: 'add_to_bag'

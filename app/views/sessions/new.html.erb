@@ -20,6 +20,10 @@
     <%= f.submit 'Log In' %>
   </div>
 <% end %>
+
+<%= button_to "Login with twitter", "/auth/twitter", method: :post%>
+
+
 <%= link_to 'Forgot password?', root_path %>
 
 

@@ -4,14 +4,14 @@ Rails.application.routes.draw do
   resources :saved_lists
   get 'session/new', to: 'sessions#new'
   post 'session/new', to: 'sessions#create'
+  get 'session/twitter/:id', to: 'sessions#createTwitterSession', as: 'twitter_session'
   delete 'session', to: 'sessions#destroy'
   get 'items/:id', to: 'items#show', as: 'show_item'
   get 'get_image/:id', to: 'items#getImage', as: 'get_image'
 
-
-  get '/search' => 'pages#search', :as => 'search_page'
-  post '/test' => 'mailtest#mailtest', :as => 'mailtestPOST'
-  get '/test' => 'mailtest#mailtest', :as => 'mailtest'
+  get '/page/search' => 'pages#search', :as => 'search_page'
+  post '/mail/test' => 'mailtest#mailtest', :as => 'mailtestPOST'
+  get '/mail/test' => 'mailtest#mailtest', :as => 'mailtest'
   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   
   get '/saved_list/:id', to: 'saved_lists#show', as: 'show_user_saved_list'
   get '/bag/:id', to: 'bags#show', as: 'show_user_bag'
+  
+  get "/auth/twitter/callback", to: "omniauth_callbacks#twitter"
+  
   
   resources :bag_items
 end

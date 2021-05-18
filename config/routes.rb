@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'session/new', to: 'sessions#create'
   delete 'session', to: 'sessions#destroy'
   get 'items/:id', to: 'items#show', as: 'show_item'
+  get 'get_image/:id', to: 'items#getImage', as: 'get_image'
 
 
   get '/search' => 'pages#search', :as => 'search_page'

@@ -18,6 +18,10 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
   end
+  
+  def getImage
+    return Item.find(params[:id]).image
+  end
 
   # POST /items or /items.json
   def create

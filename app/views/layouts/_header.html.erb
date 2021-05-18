@@ -5,7 +5,6 @@
         <div class="hello-user"><%= "Hello #{current_user.name}!"%></div>
         <%= link_to 'Logout', session_path, method: :delete %>
       <% else %>
-        <%= link_to 'Sign Up', new_user_path %>
         <%= link_to 'Log In', new_session_path %>
       <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,16 +14,19 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
        
         <li class="nav-item">
-          <%= link_to 'New Arrivals', '/New Arrivals', class:"nav-link" %>
+          <%= link_to 'New Arrivals', show_page_path(:col =>'New Arrivals'), class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Womens', '/Womens', class:"nav-link" %>
+          <%= link_to 'Womens', show_page_path(:col =>'Womens'), class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Mens', '/Mens', class:"nav-link" %>
+          <%= link_to 'Mens', show_page_path(:col =>'Mens'), class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Kids', '/Kids', class:"nav-link" %>
+          <%= link_to 'Kids', show_page_path(:col =>'Kids'), class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Help & Support', help_and_support_path, class:"nav-link" %>
         </li>
         <% if logged_in? %>
           <li class="nav-item">
@@ -33,6 +35,15 @@
           <li class="nav-item">
             <%= link_to 'Shopping bag', show_user_bag_path(:id => current_user.id), class:"nav-link" %>
           </li>
+          
+        <% else %>
+           <li class="nav-item">
+            <%= link_to 'Saved List', new_session_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Shopping bag', new_session_path, class:"nav-link" %>
+          </li>
+          
         <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -5,9 +5,17 @@ class HomepageController < ApplicationController
       @popItems = Item.limit(3).where("popularity > ?", 8) 
     else 
        @collection = params[:col]
-       @items = Item.where(collection: @collection)
+       if @collection == "New Arrivals"
+         @items = Item.where(created_at: (Time.now.midnight - 3.month)..Time.now.midnight)
+       else
+        @items = Item.where(collection: @collection)
+       end
     end
     @user = current_user
+  end
+  
+  def helpAndSupp
+    puts "debugs"
   end
 
   

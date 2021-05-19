@@ -32,15 +32,15 @@
   </a>
 </div>
 
-<p>
-  <strong>Price:</strong>
+<h2>
+  <strong>Price: $</strong>
   <%= @item.price %>
-</p>
+</h2>
 
-<p>
+<h2>
   <strong>Name:</strong>
   <%= @item.name %>
-</p>
+</h2>
 
 <p>
   <strong>Description:</strong>
@@ -58,25 +58,44 @@
   <%= @item.collection %>
 </p>
 
-<%= form_with url: add_to_bag_path(:id => @item.id), method: :post do |f| %>
+
+<%= form_with url: logged_in? ? add_to_bag_path(:id => @item.id) : new_session_path, method: :post do |f| %>
 <p>
     <b>Size</b><br />
-    <%= f.radio_button :size, 'Large' %> Large<br />
-    <%= f.radio_button :size, 'Medium' %> Medium<br />
-    <%= f.radio_button :size, 'Small' %> Small<br />
+    <%if @item.small %>
+      <%= f.radio_button :size, 'Small' %> Small<br />
+    <%else%>
+      <p>We don't make this item in this small or it is out of stock at this size.</p>
+    <%end%>
+    <%if @item.medium %>
+      <%= f.radio_button :size, 'Medium' %> Medium<br />
+    <%else%>
+      <p>We don't make this item in this medium or it is out of stock at this size.</p>
+    <%end%>
+    <%if @item.large %>
+      <%= f.radio_button :size, 'Large' %> Large<br />
+    <%else%>
+      <p>We don't make this item in this large or it is out of stock at this size.</p>
+    <%end%>
 </p>
 
 <p>
     <b>Color</b><br />
-    <%= f.radio_button :color, 'Red' %> Red<br />
-    <%= f.radio_button :color, 'Green' %> Green<br />
-    <%= f.radio_button :color, 'Blue' %> Blue<br />
+    <%if @item.color1 %>
+      <%= f.radio_button :color, @item.color1 %> <%= @item.color1 %><br />
+    <%end%>
+    <%if @item.color2 %>
+      <%= f.radio_button :color, @item.color2 %> <%= @item.color2 %><br />
+    <%end%>
+    <%if @item.color3 %>
+      <%= f.radio_button :color, @item.color3 %> <%= @item.color3 %><br />
+    <%end%>
 </p>
 <p>
     <b>Quantity</b><br />
     <%= f.select :quantity, options_for_select(0..10) %>
 </p>
-
+  
   <%= f.submit "Add to bag" %>
 
 <% end %>

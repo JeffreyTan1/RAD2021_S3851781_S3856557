@@ -30,6 +30,14 @@ class SavedListsController < ApplicationController
       user = current_user
       savedList = user.saved_list
       savedList.items << item unless savedList.items.include?(item)
+      
+      #add 1 to the popularity value
+      if savedList.items.include?(item)
+        currentPop = item.popularity
+        item.popularity = currentPop + 1
+        item.save
+      end
+      
       redirect_to root_path
     else
       redirect_to new_session_path
@@ -42,6 +50,11 @@ class SavedListsController < ApplicationController
     user = current_user
     savedList = user.saved_list
     savedList.items.destroy(item)
+    
+    currentPop = item.popularity
+    item.popularity = currentPop - 1
+    item.save
+    
     redirect_to show_user_saved_list_path(:id => current_user.id)
   end
   

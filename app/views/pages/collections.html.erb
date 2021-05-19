@@ -1,0 +1,81 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+<%# To render a collection %>
+<%if !@items.nil?%>
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Filters
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        
+        <%= form_tag(show_filtered_path(:col => @collection, :fil => "filtered"), method: "get") do |f| %>
+            <p>
+                <b>Size</b><br />
+                 
+                  <%= radio_button_tag(:size, "Small") %>
+                  <%= label_tag(:size, "Small") %>
+                  <%= radio_button_tag(:size, "Medium") %>
+                  <%= label_tag(:size, "Medium") %>
+                  <%= radio_button_tag(:size, "Large") %>
+                  <%= label_tag(:size, "Large") %>
+            </p>
+            
+            <p>
+                <b>Color</b><br />
+                    <%= check_box_tag(:red) %>
+                    <%= label_tag(:red, "Red") %>
+                    <%= check_box_tag(:blue) %>
+                    <%= label_tag(:blue, "Blue") %>
+                    <%= check_box_tag(:black) %>
+                    <%= label_tag(:black, "Black") %>
+                    <%= check_box_tag(:yellow) %>
+                    <%= label_tag(:yellow, "Yellow") %>
+                    <%= check_box_tag(:green) %>
+                    <%= label_tag(:green, "Green") %>
+                    <%= check_box_tag(:grey) %>
+                    <%= label_tag(:grey, "Grey") %>
+                    <%= check_box_tag(:white) %>
+                    <%= label_tag(:white, "White") %>
+                    <%= check_box_tag(:pink) %>
+                    <%= label_tag(:pink, "Pink") %>
+                    <%= check_box_tag(:denim) %>
+                    <%= label_tag(:denim, "Denim") %>
+                    <%= check_box_tag(:pink) %>
+                    <%= label_tag(:leather, "Leather") %>
+            </p>
+            
+            <p>
+                <b>Tags</b><br />
+                    <%= check_box_tag(:stylish) %>
+                    <%= label_tag(:stylish, "Stylish") %>
+                    <%= check_box_tag(:winter) %>
+                    <%= label_tag(:winter, "Winter") %>
+                    <%= check_box_tag(:casual) %>
+                    <%= label_tag(:casual, "Casual") %>
+            </p>
+              
+              <%= submit_tag("Apply Filters") %>
+            
+        <% end %>
+    </div>
+</div>
+
+
+    
+        <h1><%=@collection%></h1>
+        <% @items.each do |item| %>
+            <div class = "card">
+                <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
+                <small>$<%=item.price%> <br> <%=item.description%></small></p>
+                <%= image_tag(item.image, width: 200) %>
+                <%= button_to '+', add_to_saved_list_path(:id => item.id), method: :post %>
+            </div>
+        <%end%>
+        
+        
+<%end%>

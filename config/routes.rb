@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post '/mail/test' => 'mailtest#mailtest', :as => 'mailtestPOST'
   get '/mail/test' => 'mailtest#mailtest', :as => 'mailtest'
   
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -22,9 +23,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # resources :items
   
-  
+
+
   root 'homepage#show'
-  get '/collection/:col', to: 'homepage#show', as: 'show_page'
+  get '/collection/:col', to: 'pages#collections', as: 'show_collections'
+  get '/collection/:col/:fil', to: 'pages#filtered', as: 'show_filtered'
   get '/HelpAndSupport', to: 'homepage#helpAndSupp', as: 'help_and_support'
   
   post '/toSList/:id', to: 'saved_lists#addToList', as: 'add_to_saved_list'

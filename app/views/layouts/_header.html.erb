@@ -4,9 +4,12 @@
       <% if logged_in? %>
         <div class="hello-user"><%= "Hello #{current_user.name}!"%></div>
         <%= link_to 'Logout', session_path, method: :delete %>
+        <%= link_to(image_tag("https://img.icons8.com/ios/452/shopping-bag--v1.png", class: 'image-responsive'), show_user_bag_path(:id => current_user.id),  :method => :get) %>
       <% else %>
         <%= link_to 'Log In', new_session_path %>
+        <%= link_to(image_tag("https://img.icons8.com/ios/452/shopping-bag--v1.png", class: 'image-responsive'), new_session_path,  :method => :get) %>
       <% end %>
+      
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210517010000) do
+ActiveRecord::Schema.define(version: 2021_05_19_104611) do
 
   create_table "bag_items", force: :cascade do |t|
     t.string "color"
@@ -37,10 +37,16 @@ ActiveRecord::Schema.define(version: 20210517010000) do
     t.string "name"
     t.string "description"
     t.string "image"
-    t.float "popularity"
+    t.integer "popularity"
     t.string "collection"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color1"
+    t.string "color2"
+    t.string "color3"
+    t.boolean "small"
+    t.boolean "medium"
+    t.boolean "large"
     t.index ["saved_list_id"], name: "index_items_on_saved_list_id"
   end
 

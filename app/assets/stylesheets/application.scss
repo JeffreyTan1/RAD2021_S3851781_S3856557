@@ -11,7 +11,7 @@
 }
 
 img.resize {
-    width:540px; /* you can use % */
+    width:540px; 
     height: auto;
 }
 
@@ -19,5 +19,10 @@ img.resize {
   color :white;
 }
 
-
+.image-responsive {
+  width:30px; 
+  height: 30px;
+  background-color: white;
+  padding: 3px;
+}
 

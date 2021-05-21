@@ -8,5 +8,4 @@ class MailtestController < ApplicationController
             NewsletterMailer.with(emailDest: params[:emailDest]).newsletter_email.deliver_later
         end
     end
-    
 end

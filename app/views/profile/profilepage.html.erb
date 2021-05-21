@@ -1,0 +1,9 @@
+<h1>Profile: <%= @aUser.name %></h1>
+<img src= <%= @gravatarUrl %> alt="Gravatar">
+<p>Name: <%= @aUser.name %></p>
+<p>Email: <%= @aUser.email %></p>
+
+<label> Sign up to newsletter</label>
+<%= form_tag(profilepage_url, :method => "post", class: 'Send') do %> 
+<%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-envelope',:name => nil%>
+<% end %>

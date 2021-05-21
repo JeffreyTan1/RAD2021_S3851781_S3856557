@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  
   resources :bags
   resources :saved_lists
   get 'session/new', to: 'sessions#new'
@@ -11,6 +12,10 @@ Rails.application.routes.draw do
 
 
   get '/search' => 'pages#search', :as => 'search_page'
+  post '/profile' => 'profile#profilepageEmail', :as => 'profilepage'
+  get '/profile' => 'profile#profilepage'
+  
+  
   post '/newsletter' => 'mailtest#mailtest', :as => 'mailtestPOST'
   get '/newsletter' => 'mailtest#mailtest', :as => 'mailtest'
 

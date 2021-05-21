@@ -25,10 +25,22 @@ img.resize {
   color :white;
 }
 
+
 .image-responsive {
   width:30px; 
   height: 30px;
   background-color: white;
   padding: 3px;
+}
+
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: gray;
+   color: white;
+   text-align: center;
 }
 

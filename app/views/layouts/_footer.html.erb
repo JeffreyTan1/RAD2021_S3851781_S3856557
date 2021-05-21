@@ -1,1 +1,16 @@
-<p>Clothic App was created by Jeffrey Tan (S3851781) and William Hu (S3856557)</p>
+<div class="footer">
+    <p>
+        <div class="input-group-btn">  
+            <%= button_to "Home".html_safe, root_path, class: "btn btn-info glyphicon glyphicon-home", method: :get%>
+        </div>
+        <div class="input-group-btn">  
+            <%= button_to "Scan".html_safe, mailtest_url, class: "btn btn-info glyphicon glyphicon-qrcode"%>
+        </div>
+        <div class="input-group-btn">  
+            <%= button_to "Saved".html_safe, mailtest_url, class: "btn btn-info glyphicon glyphicon-list"%>
+        </div>
+        <div class="input-group-btn">  
+            <%= button_to "Newsletter".html_safe, mailtest_url, class: "btn btn-info glyphicon glyphicon-user"%>
+        </div>
+    </p>
+</div>

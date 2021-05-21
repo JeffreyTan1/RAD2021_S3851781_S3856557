@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   get 'items/:id', to: 'items#show', as: 'show_item'
   get 'get_image/:id', to: 'items#getImage', as: 'get_image'
 
-  get '/page/search' => 'pages#search', :as => 'search_page'
-  post '/mail/test' => 'mailtest#mailtest', :as => 'mailtestPOST'
-  get '/mail/test' => 'mailtest#mailtest', :as => 'mailtest'
-  
+
+  get '/search' => 'pages#search', :as => 'search_page'
+  post '/newsletter' => 'mailtest#mailtest', :as => 'mailtestPOST'
+  get '/newsletter' => 'mailtest#mailtest', :as => 'mailtest'
+
   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

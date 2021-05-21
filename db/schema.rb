@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_112325) do
+ActiveRecord::Schema.define(version: 2021_05_21_100758) do
 
   create_table "bag_items", force: :cascade do |t|
     t.string "color"
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 2021_05_19_112325) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_bags_on_user_id"
+  end
+
+  create_table "bypass_password_instances", force: :cascade do |t|
+    t.integer "userId"
+    t.string "key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|

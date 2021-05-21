@@ -1,0 +1,2 @@
+class BypassPasswordInstance < ApplicationRecord
+end

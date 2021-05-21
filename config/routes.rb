@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   
-  
+  resources :bypass_password_instances
   resources :bags
   resources :saved_lists
   get 'session/new', to: 'sessions#new'
   post 'session/new', to: 'sessions#create'
+  get 'session/new/:key', to: 'sessions#bypass_password'
   get 'session/twitter/:id', to: 'sessions#createTwitterSession', as: 'twitter_session'
   delete 'session', to: 'sessions#destroy'
+  
+  get '/session/forgot_password', to: 'sessions#show_forgot_password', as: 'forgot_password_session'
+  post '/session/forgot_password', to: 'sessions#forgot_password'
+  
   get 'items/:id', to: 'items#show', as: 'show_item'
   get 'get_image/:id', to: 'items#getImage', as: 'get_image'
 
@@ -29,7 +34,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # resources :items
   
-
+  
 
   root 'homepage#show'
   get '/collection/:col', to: 'pages#collections', as: 'show_collections'

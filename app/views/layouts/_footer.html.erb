@@ -6,11 +6,25 @@
         <div class="input-group-btn">  
             <%= button_to "Scan".html_safe, root_path, class: "btn btn-info glyphicon glyphicon-qrcode", method: :get%>
         </div>
-        <div class="input-group-btn">  
-            <%= button_to "Saved".html_safe, show_user_saved_list_path(:id => current_user.id), class: "btn btn-info glyphicon glyphicon-list", method: :get%>
-        </div>
-        <div class="input-group-btn">  
-            <%= button_to "Profile".html_safe, profilepage_url, class: "btn btn-info glyphicon glyphicon-user", method: :get%>
-        </div>
+        <% if logged_in? %>
+                <div class="input-group-btn">  
+                <%= button_to "Saved".html_safe, show_user_saved_list_path(:id => current_user.id), class: "btn btn-info glyphicon glyphicon-list", method: :get%>
+                </div>
+                <div class="input-group-btn">  
+                    <%= button_to "Profile".html_safe, profilepage_url, class: "btn btn-info glyphicon glyphicon-user", method: :get%>
+                </div>
+          
+        <% else %>
+                <div class="input-group-btn">  
+                    <%= button_to "Saved".html_safe, new_session_path, class: "btn btn-info glyphicon glyphicon-list", method: :get%>
+                </div>
+                <div class="input-group-btn">  
+                    <%= button_to "Profile".html_safe, new_session_path, class: "btn btn-info glyphicon glyphicon-user", method: :get%>
+                </div>
+              
+        <% end %>
     </p>
+    
+    
+        
 </div>

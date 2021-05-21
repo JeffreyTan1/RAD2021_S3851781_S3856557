@@ -28,7 +28,8 @@ Rails.application.routes.draw do
 
   root 'homepage#show'
   get '/collection/:col', to: 'pages#collections', as: 'show_collections'
-  get '/collection/:col/:fil', to: 'pages#filtered', as: 'show_filtered'
+  get '/collection/:col/:fil', to: 'pages#collections', as: 'show_filtered'
+  
   get '/HelpAndSupport', to: 'homepage#helpAndSupp', as: 'help_and_support'
   
   post '/toSList/:id', to: 'saved_lists#addToList', as: 'add_to_saved_list'

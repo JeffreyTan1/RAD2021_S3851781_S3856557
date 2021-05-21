@@ -41,12 +41,12 @@ Rails.application.routes.draw do
   get '/collection/:col/:fil', to: 'pages#collections', as: 'show_filtered'
   
   get '/HelpAndSupport', to: 'homepage#helpAndSupp', as: 'help_and_support'
-  
-  post '/toSList/:id', to: 'saved_lists#addToList', as: 'add_to_saved_list'
+ 
   post '/toBag/:id', to: 'bag_items#addToList', as: 'add_to_bag'
-  
-  post '/removeSL/:id', to: 'saved_lists#removeFromList', as: 'remv_from_saved_list'
   post '/removeB/:id', to: 'bag_items#removeFromList', as: 'remv_from_bag'
+  
+  post '/removeSL/:id', to: 'saved_lists#toggleList', as: 'remv_from_saved_list'
+  post '/toSList/:id', to: 'saved_lists#toggleList', as: 'add_to_saved_list'
   
   post '/checkout/:id', to: 'bags#checkout', as: 'checkout_bag'
   

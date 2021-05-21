@@ -24,38 +24,21 @@ class SavedListsController < ApplicationController
   def edit
   end
   
-  def addToList
-    if current_user 
+  def toggleList
+    if current_user
       item = Item.find_by(id: params[:id])
-      user = current_user
-      savedList = user.saved_list
-      savedList.items << item unless savedList.items.include?(item)
-      
-      #add 1 to the popularity value
-      if savedList.items.include?(item)
-        currentPop = item.popularity
-        item.popularity = currentPop + 1
-        item.save
+      savedList = current_user.saved_list
+      if !savedList.items.include? item
+        addToList(params[:id])
+        redirect_to root_path
+      else
+        removeFromList(params[:id])
+        #redirect_to show_user_saved_list_path(:id => current_user.id)
+        redirect_to root_path
       end
-      
-      redirect_to root_path
     else
       redirect_to new_session_path
     end
-    
-  end
-  
-  def removeFromList
-    item = Item.find_by(id: params[:id])
-    user = current_user
-    savedList = user.saved_list
-    savedList.items.destroy(item)
-    
-    currentPop = item.popularity
-    item.popularity = currentPop - 1
-    item.save
-    
-    redirect_to show_user_saved_list_path(:id => current_user.id)
   end
   
   # POST /saved_lists or /saved_lists.json
@@ -101,9 +84,34 @@ class SavedListsController < ApplicationController
       user = User.find_by(id: params[:id])
       @saved_list = user.saved_list
     end
-
+  
     # Only allow a list of trusted parameters through.
     def saved_list_params
       params.require(:saved_list).permit(:user_id)
+    end
+    
+    def addToList(item_id)
+      item = Item.find_by(id: item_id)
+      user = current_user
+      savedList = user.saved_list
+      savedList.items << item unless savedList.items.include?(item)
+      
+      #add 1 to the popularity value
+      if savedList.items.include?(item)
+        currentPop = item.popularity
+        item.popularity = currentPop + 1
+        item.save
+      end
+    end
+  
+    def removeFromList(item_id)
+      item = Item.find_by(id: item_id)
+      user = current_user
+      savedList = user.saved_list
+      savedList.items.destroy(item)
+      
+      currentPop = item.popularity
+      item.popularity = currentPop - 1
+      item.save
     end
 end

@@ -41,7 +41,7 @@ class PagesController < ApplicationController
         query = "SELECT id FROM items WHERE collection = \'#{@collection}\' AND"
         
         if !params[:size].nil?
-            query = query + " #{params(:size)} = true AND"
+            query = query + " #{params[:size].downcase} = '1' AND"
         end
         
         query = query + " id IN (SELECT id FROM items WHERE"

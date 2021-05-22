@@ -17,48 +17,38 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
        
         <li class="nav-item">
-          <%= link_to 'New Arrivals', show_collections_path(:col =>'New Arrivals'), class:"nav-link" %>
+          <%= link_to '--New Arrivals', show_collections_path(:col =>'New Arrivals'), class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Womens', show_collections_path(:col =>'Womens'), class:"nav-link" %>
+          <%= link_to '--Womens', show_collections_path(:col =>'Womens'), class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Mens', show_collections_path(:col =>'Mens'), class:"nav-link" %>
+          <%= link_to '--Mens', show_collections_path(:col =>'Mens'), class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Kids', show_collections_path(:col =>'Kids'), class:"nav-link" %>
+          <%= link_to '--Kids', show_collections_path(:col =>'Kids'), class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Help & Support', help_and_support_path, class:"nav-link" %>
+          <%= link_to '--Help & Support', help_and_support_path, class:"nav-link" %>
         </li>
         <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to 'Saved List', show_user_saved_list_path(:id => current_user.id), class:"nav-link" %>
+            <%= link_to '--Saved List', show_user_saved_list_path(:id => current_user.id), class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Shopping bag', show_user_bag_path(:id => current_user.id), class:"nav-link" %>
+            <%= link_to '--Shopping bag', show_user_bag_path(:id => current_user.id), class:"nav-link" %>
           </li>
           
         <% else %>
            <li class="nav-item">
-            <%= link_to 'Saved List', new_session_path, class:"nav-link" %>
+            <%= link_to '--Saved List', new_session_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Shopping bag', new_session_path, class:"nav-link" %>
+            <%= link_to '--Shopping bag', new_session_path, class:"nav-link" %>
           </li>
           
         <% end %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
+        
       </ul>
         <%= form_tag(search_page_path, :method => "get",   
           class: 'navbar-form navbar-left') do %>  

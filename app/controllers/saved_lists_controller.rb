@@ -30,11 +30,10 @@ class SavedListsController < ApplicationController
       savedList = current_user.saved_list
       if !savedList.items.include? item
         addToList(params[:id])
-        redirect_to root_path
+         redirect_back(fallback_location: root_path)
       else
         removeFromList(params[:id])
-        #redirect_to show_user_saved_list_path(:id => current_user.id)
-        redirect_to root_path
+         redirect_back(fallback_location: root_path)
       end
     else
       redirect_to new_session_path

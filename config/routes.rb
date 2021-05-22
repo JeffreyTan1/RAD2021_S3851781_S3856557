@@ -45,8 +45,8 @@ Rails.application.routes.draw do
   post '/toBag/:id', to: 'bag_items#addToList', as: 'add_to_bag'
   post '/removeB/:id', to: 'bag_items#removeFromList', as: 'remv_from_bag'
   
-  post '/removeSL/:id', to: 'saved_lists#toggleList', as: 'remv_from_saved_list'
-  post '/toSList/:id', to: 'saved_lists#toggleList', as: 'add_to_saved_list'
+  
+  post '/addOrRemoveFromSL/:id', to:'saved_lists#toggleList', as: 'toggle_item_saved_list'
   
   post '/checkout/:id', to: 'bags#checkout', as: 'checkout_bag'
   

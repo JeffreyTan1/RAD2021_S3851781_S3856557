@@ -5,8 +5,23 @@
             <div class = "card">
                 <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
                 <small>$<%=item.price%> <br> <%=item.description%></small></p>
-                <%= image_tag(item.image, width: 200) %>
-                <%= link_to 'Remove from saved list', remv_from_saved_list_path(:id => item.id), method: :post %>
+                
+                <div class = "image-button-container">
+                    <%= link_to(image_tag(item.image, width: 200), show_item_path(:id => item.id)) %>
+                    <div class = "float-btn">
+                        <%= button_to toggle_item_saved_list_path(:id => item.id), method: :post do %>
+                            <%if logged_in? %>
+                                <%if @savedListItems.include? item %>
+                                    <%= image_tag("/assets/filledheart.png", class: "float-img")%>
+                                <%else%>
+                                    <%= image_tag("/assets/emptyheart.png", class: "float-img")%>
+                                <%end%>
+                            <%else%>
+                                <%= image_tag("/assets/emptyheart.png", class: "float-img")%>
+                            <%end%>
+                        <%end%>
+                    </div>
+                </div>
             </div>
             
         <%end%>

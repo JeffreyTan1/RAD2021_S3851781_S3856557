@@ -52,9 +52,11 @@ Rails.application.routes.draw do
   
   get '/saved_list/:id', to: 'saved_lists#show', as: 'show_user_saved_list'
   get '/bag/:id', to: 'bags#show', as: 'show_user_bag'
+  get '/bag/:id/:rating', to: 'bags#show', as: 'show_user_bag_rating'
   
-  get "/auth/twitter/callback", to: "omniauth_callbacks#twitter"
+  get "/auth/twitter/callback", to: 'omniauth_callbacks#twitter'
   
+  post '/rate', to: 'ratings#addRating', as: 'add_rating_path'
   
   resources :bag_items
 end

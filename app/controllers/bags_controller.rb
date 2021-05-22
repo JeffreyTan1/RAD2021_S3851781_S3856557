@@ -8,6 +8,15 @@ class BagsController < ApplicationController
 
   # GET /bags/1 or /bags/1.json
   def show
+    if !params[:rating].nil?
+      @showRating = true
+    else
+      @showRating = false
+    end
+    puts "in show we have showrating"
+    puts @showRating
+    
+    
     @total_items = 0;
     @uniq_items = 0;
     @items = @bag.items
@@ -32,11 +41,31 @@ class BagsController < ApplicationController
   end
   
   def checkout
-    item = Item.find_by(id: params[:id])
+    
     user = current_user
     mBag = user.bag
-    mBag.items.delete_all
-    redirect_to show_user_bag_path(:id => current_user.id)
+    
+    if !mBag.items.empty?
+    
+      mBag.items.delete_all
+      
+      if user.first_checkout
+        showRating = true
+        user.update(first_checkout: 'f')
+        user.save
+      else
+        showRating = false
+      end
+      
+      
+      if showRating
+        redirect_to show_user_bag_rating_path(:id => current_user.id, :rating => "rate")
+      else
+        redirect_to show_user_bag_path(:id => current_user.id)
+      end
+    else
+      redirect_to show_user_bag_path(:id => current_user.id), notice: "You need to have something in your cart to checkout!"
+    end
   end
   
   # POST /bags or /bags.json

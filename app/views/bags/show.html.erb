@@ -15,16 +15,16 @@
                         <%= link_to(image_tag(item.image, width: 200), show_item_path(:id => item.id)) %>
                         <div class = "float-btn">
                             <%= button_to toggle_item_saved_list_path(:id => item.id), method: :post do %>
-                                <%if logged_in? %>
-                                    <%if @savedListItems.include? item %>
-                                        <%= image_tag("/assets/filledheart.jpg", class: "float-img")%>
-                                    <%else%>
-                                        <%= image_tag("/assets/emptyheart.jpg", class: "float-img")%>
-                                    <%end%>
+                            <%if logged_in? %>
+                                <%if @savedListItems.include? item %>
+                                    <%= image_tag "https://cdn2.iconfinder.com/data/icons/peppyicons/512/heart-512.png", class: "float-img"%>
                                 <%else%>
-                                    <%= image_tag("/assets/emptyheart.jpg", class: "float-img")%>
+                                    <%= image_tag "https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-233_heart_favorite_like-512.png", class: "float-img"%>
                                 <%end%>
+                            <%else%>
+                                <%= image_tag "https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-233_heart_favorite_like-512.png", class: "float-img"%>
                             <%end%>
+                        <%end%>
                         </div>
                     </div>
                     <%= link_to 'Remove from bag', remv_from_bag_path(:id => item.id), method: :post %>

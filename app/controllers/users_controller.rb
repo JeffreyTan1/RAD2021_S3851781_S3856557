@@ -28,6 +28,9 @@ class UsersController < ApplicationController
   end
   
   def edit_password
+    if !current_user
+      redirect_to new_session_path
+    end
   end
   
   def update_password

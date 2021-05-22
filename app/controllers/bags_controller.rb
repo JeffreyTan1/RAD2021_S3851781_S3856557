@@ -47,6 +47,10 @@ class BagsController < ApplicationController
     
     if !mBag.items.empty?
     
+      mBag.items.each do |item|
+        item.update(purchase_count: item.purchase_count + 1)
+        item.save
+      end
       mBag.items.delete_all
       
       if user.first_checkout

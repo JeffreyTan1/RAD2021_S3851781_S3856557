@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if :password != :confirm_password
       
         @user = User.new(user_params)
-        @user.update(first_checkout: 't')
+        @user.update(first_checkout: 't', is_admin: 'f')
         if @user.save
           redirect_to root_path, notice: 'You have successfully created an account!'
           puts @user.id

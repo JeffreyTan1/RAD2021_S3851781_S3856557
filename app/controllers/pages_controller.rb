@@ -55,6 +55,15 @@ class PagesController < ApplicationController
             
     end
     
+    def cam_scan
+    end
+    
+    def admin_portal
+        @sLCountOrderItems = Item.order(sl_count: :desc)
+        @pCountOrderItems = Item.order(purchase_count: :desc)
+        @avg_rating = Rating.average("rating")
+    end
+    
     private
     
     def filter

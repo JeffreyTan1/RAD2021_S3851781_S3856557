@@ -29,9 +29,13 @@ class SavedListsController < ApplicationController
       item = Item.find_by(id: params[:id])
       savedList = current_user.saved_list
       if !savedList.items.include? item
+        item.update(sl_count: item.sl_count + 1)
+        item.save
         addToList(params[:id])
-         redirect_back(fallback_location: root_path)
+        redirect_back(fallback_location: root_path)
       else
+        item.update(sl_count: item.sl_count - 1)
+        item.save
         removeFromList(params[:id])
          redirect_back(fallback_location: root_path)
       end

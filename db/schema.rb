@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_065126) do
+ActiveRecord::Schema.define(version: 2021_05_22_082719) do
 
   create_table "bag_items", force: :cascade do |t|
     t.string "color"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2021_05_22_065126) do
     t.boolean "medium"
     t.boolean "large"
     t.string "keyword"
+    t.integer "purchase_count"
+    t.integer "sl_count"
     t.index ["saved_list_id"], name: "index_items_on_saved_list_id"
   end
 
@@ -84,6 +86,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_065126) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "first_checkout"
+    t.boolean "is_admin"
   end
 
 end

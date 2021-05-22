@@ -4,7 +4,7 @@
             <%= button_to "Home".html_safe, root_path, class: "btn btn-info glyphicon glyphicon-home", method: :get%>
         </div>
         <div class="input-group-btn">  
-            <%= button_to "Scan".html_safe, root_path, class: "btn btn-info glyphicon glyphicon-qrcode", method: :get%>
+            <%= button_to "Scan".html_safe, cam_scan_path, class: "btn btn-info glyphicon glyphicon-qrcode", method: :get%>
         </div>
         <% if logged_in? %>
                 <div class="input-group-btn">  

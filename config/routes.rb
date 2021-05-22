@@ -27,8 +27,9 @@ Rails.application.routes.draw do
   post '/newsletter' => 'mailtest#mailtest', :as => 'mailtestPOST'
   get '/newsletter' => 'mailtest#mailtest', :as => 'mailtest'
   
+  get '/scan' => 'pages#cam_scan', as: 'cam_scan'
 
-  
+  get '/admin' => 'pages#admin_portal'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

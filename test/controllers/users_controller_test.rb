@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  def test_create
+
+    post '/user/new', params: {email: user.email, password: user.password}
+    assert_redirected_to 'http://www.example.com/'
+  end
 end

@@ -10,7 +10,7 @@ class OmniauthCallbacksController < ApplicationController
         redirect_to new_session_path, notice: 'Email or password is invalid'
       end
     else
-      newUser = User.create(name: auth.info.name, email: auth.info.email, password: auth.credentials.token[0,19])
+      newUser = User.create(name: auth.info.name, email: auth.info.email, password: auth.credentials.token[0,19], first_checkout: 1, is_admin: 0)
       newUser.save
       
       puts "saved?"

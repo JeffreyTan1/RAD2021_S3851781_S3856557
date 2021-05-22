@@ -55,7 +55,7 @@ class BagsController < ApplicationController
       
       if user.first_checkout
         showRating = true
-        user.update(first_checkout: 'f')
+        user.update(first_checkout: 0)
         user.save
       else
         showRating = false

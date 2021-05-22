@@ -19,12 +19,12 @@
                         <%= button_to toggle_item_saved_list_path(:id => item.id), method: :post do %>
                             <%if logged_in? %>
                                 <%if @savedListItems.include? item %>
-                                    <%= image_tag("/assets/filledheart.jpg", class: "float-img")%>
+                                    <%= image_tag "/assets/filledheart.jpg", class: "float-img"%>
                                 <%else%>
-                                    <%= image_tag("/assets/emptyheart.jpg", class: "float-img")%>
+                                    <%= image_tag "/assets/emptyheart.jpg", class: "float-img"%>
                                 <%end%>
                             <%else%>
-                                <%= image_tag("/assets/emptyheart.jpg", class: "float-img")%>
+                                <%= image_tag "/assets/emptyheart.jpg", class: "float-img"%>
                             <%end%>
                         <%end%>
                     </div>
@@ -45,12 +45,12 @@
                         <%= button_to toggle_item_saved_list_path(:id => item.id), method: :post do %>
                             <%if logged_in? %>
                                 <%if @savedListItems.include? item %>
-                                    <%= image_tag("/assets/filledheart.jpg", class: "float-img")%>
+                                    <%= image_tag "/assets/filledheart.jpg", class: "float-img"%>
                                 <%else%>
-                                    <%= image_tag("/assets/emptyheart.jpg", class: "float-img")%>
+                                    <%= image_tag "/assets/emptyheart.jpg", class: "float-img"%>
                                 <%end%>
                             <%else%>
-                                <%= image_tag("/assets/emptyheart.jpg", class: "float-img")%>
+                                <%= image_tag "/assets/emptyheart.jpg", class: "float-img"%>
                             <%end%>
                         <%end%>
                     </div>

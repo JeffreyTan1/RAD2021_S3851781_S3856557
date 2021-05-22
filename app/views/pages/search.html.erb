@@ -11,12 +11,12 @@
                         <%= button_to toggle_item_saved_list_path(:id => result.id), method: :post do %>
                             <%if logged_in? %>
                                 <%if @savedListItems.include? result %>
-                                    <%= image_tag("/assets/filledheart.png", class: "float-img")%>
+                                    <%= image_tag("/assets/filledheart.jpg", class: "float-img")%>
                                 <%else%>
-                                    <%= image_tag("/assets/emptyheart.png", class: "float-img")%>
+                                    <%= image_tag("/assets/emptyheart.jpg", class: "float-img")%>
                                 <%end%>
                             <%else%>
-                                <%= image_tag("/assets/emptyheart.png", class: "float-img")%>
+                                <%= image_tag("/assets/emptyheart.jpg", class: "float-img")%>
                             <%end%>
                         <%end%>
                     </div>

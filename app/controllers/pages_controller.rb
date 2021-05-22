@@ -28,7 +28,7 @@ class PagesController < ApplicationController
         if params[:fil].nil? || params[:all_filter_button]
             #if collection is New arrivals then sort by creation date
             if @collection == "New Arrivals"
-                @items = Item.where(created_at: (Time.now.midnight - 3.month)..Time.now.midnight)
+                @items = Item.where("created_at > ?", 3.months.ago)
             else
                 @items = Item.where(collection: @collection)
             end

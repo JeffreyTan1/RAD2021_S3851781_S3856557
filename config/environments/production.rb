@@ -100,5 +100,6 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto: true }
     
-  config.action_mailer.default_url_options = { :host => "https://b25e6753a4504bea90ee909df4c5523f.vfs.cloud9.ap-southeast-2.amazonaws.com/" }
+  config.action_mailer.default_url_options = { :host => "https://clothic-app-rad.herokuapp.com/" }
+  
 end

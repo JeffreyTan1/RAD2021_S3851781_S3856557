@@ -26,6 +26,20 @@ class UsersController < ApplicationController
       redirect_to new_user_path, notice: 'Passwords did not match'
     end
   end
+  
+  def edit_password
+  end
+  
+  def update_password
+    if current_user
+      current_user.update(password: params[:new_pw])
+      current_user.save
+      puts current_user.password
+      redirect_to '/profile'
+    else
+      redirect_to new_session_path
+    end
+  end
 
   private
 

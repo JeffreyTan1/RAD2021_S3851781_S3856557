@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get '/session/forgot_password', to: 'sessions#show_forgot_password', as: 'forgot_password_session'
   post '/session/forgot_password', to: 'sessions#forgot_password'
   
+  get '/user/change_password', to: 'users#edit_password', as: 'change_password_path'
+  post '/user/change_password', to: 'users#update_password', as: 'update_password'
+  
   get 'items/:id', to: 'items#show', as: 'show_item'
   get 'get_image/:id', to: 'items#getImage', as: 'get_image'
 
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
   
   post '/newsletter' => 'mailtest#mailtest', :as => 'mailtestPOST'
   get '/newsletter' => 'mailtest#mailtest', :as => 'mailtest'
+  
 
   
 

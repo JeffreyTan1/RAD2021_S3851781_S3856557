@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :set_saved_list_items
   
   def set_saved_list_items
-    if logged_in?
+    if logged_in? && current_user
       @savedListItems = current_user.saved_list.items
     end
   end

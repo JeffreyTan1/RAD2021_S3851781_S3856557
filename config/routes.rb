@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get '/session/forgot_password', to: 'sessions#show_forgot_password', as: 'forgot_password_session'
   post '/session/forgot_password', to: 'sessions#forgot_password'
   
-  get '/user/change_password', to: 'users#edit_password', as: 'change_password_path'
+ get '/subscribe/:emailDest', to: 'mailtest#toggle_sub', as: 'subscribe_newsletter'
+  
+  get '/user/change_password', to: 'users#edit_password', as: 'change_password'
   post '/user/change_password', to: 'users#update_password', as: 'update_password'
   
   get 'items/:id', to: 'items#show', as: 'show_item'
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
   
   
   post '/newsletter' => 'mailtest#mailtest', :as => 'mailtestPOST'
-  get '/newsletter' => 'mailtest#mailtest', :as => 'mailtest'
+  get '/newsletter' => 'mailtest#mail_show', :as => 'mailtest'
   
   get '/scan' => 'pages#cam_scan', as: 'cam_scan'
 

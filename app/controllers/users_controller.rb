@@ -32,16 +32,29 @@ class UsersController < ApplicationController
       redirect_to new_session_path
     end
   end
-  
+  #also updates email
   def update_password
     if current_user
+      pwChanged = !params[:new_pw].nil?
+      emailChanged = !params[:new_email].nil?
+      
+      
+      if pwChanged
       current_user.update(password: params[:new_pw])
       current_user.save
-      puts current_user.password
-      redirect_to '/profile'
+      end
+      
+      if emailChanged
+      current_user.update(email: params[:new_email])
+      current_user.save
+      end
+      
+      redirect_to '/profile' , notice: "Email and/or password changed!"
     else
       redirect_to new_session_path
     end
+    
+    
   end
 
   private

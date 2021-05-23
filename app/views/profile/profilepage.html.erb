@@ -1,3 +1,6 @@
+
+
+
 <h1>Profile: <%= @aUser.name %></h1>
 <img src= <%= @gravatarUrl %> alt="Gravatar">
 <p>Name: <%= @aUser.name %></p>
@@ -7,3 +10,22 @@
 <%= form_tag(profilepage_url, :method => "post", class: 'Send') do %> 
 <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-envelope',:name => nil%>
 <% end %>
+
+<br><br>
+<%= link_to "Show Pending Orders" , show_user_bag_path(:id => @aUser.id)%>
+
+<br><br>
+<%= link_to "Update Login Details" , change_password_path%>
+
+<br><br>
+
+<%= link_to 'Subscribe to Our Newsletter', subscribe_newsletter_path(:emailDest => @aUser.email)%>
+
+<br><br>
+
+<%= link_to 'Logout', session_path, method: :delete %>
+
+
+<br><br>
+
+<h1 id="notice"><%= notice %></h1>

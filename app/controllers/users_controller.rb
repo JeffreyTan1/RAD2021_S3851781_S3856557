@@ -5,8 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if :password != :confirm_password
-      
+    
         @user = User.new(user_params)
         @user.update(first_checkout: 1, is_admin: 0)
         if @user.save
@@ -21,10 +20,7 @@ class UsersController < ApplicationController
         else
           render :new
         end
-      
-    else
-      redirect_to new_user_path, notice: 'Passwords did not match'
-    end
+  
   end
   
   def edit_password
@@ -60,7 +56,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
   
 end

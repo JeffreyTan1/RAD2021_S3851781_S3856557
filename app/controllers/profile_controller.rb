@@ -1,6 +1,5 @@
 class ProfileController < ApplicationController
   def profilepageEmail
-    puts "Pressed AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     NewsletterMailer.with(emailDest: current_user.email).newsletter_email.deliver_later
   end
   

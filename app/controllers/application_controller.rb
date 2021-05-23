@@ -20,5 +20,10 @@ class ApplicationController < ActionController::Base
     current_user
   end
   
+  def create_saved_list_visitor
+    if !logged_in?
+      @saved_list = Saved_list.create()
+    end
+  end  
   
 end

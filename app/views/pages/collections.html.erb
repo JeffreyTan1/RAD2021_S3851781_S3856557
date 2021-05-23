@@ -1,0 +1,104 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+<%# To render a collection %>
+<%if !@items.nil?%>
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Filters
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        
+        <%= form_tag(show_filtered_path(:col => @collection, :fil => "filtered"), method: "get") do |f| %>
+            <p>
+                <%= submit_tag("All", name: 'all_filter_button') %> <br> <br>
+                <b>Size</b><br />
+                 
+                  <%= radio_button_tag(:size, "Small") %>
+                  <%= label_tag(:size, "Small") %>
+                  <%= radio_button_tag(:size, "Medium") %>
+                  <%= label_tag(:size, "Medium") %>
+                  <%= radio_button_tag(:size, "Large") %>
+                  <%= label_tag(:size, "Large") %>
+            </p>
+            
+            <p>
+                <b>Color</b><br />
+                    <input type="checkbox" id="red" name="red" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			<%= label_tag(:red, "Red") %>
+        			<input type="checkbox" id="blue" name="blue" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			<%= label_tag(:blue, "Blue") %>
+        			<input type="checkbox" id="black" name="black" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			<%= label_tag(:black, "Black") %>
+        			<input type="checkbox" id="yellow" name="yellow" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			<%= label_tag(:yellow, "Yellow") %>
+        			<input type="checkbox" id="green" name="green" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			<%= label_tag(:green, "Green") %>
+        			<input type="checkbox" id="grey" name="grey" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			 <%= label_tag(:grey, "Grey") %>
+        			<input type="checkbox" id="white" name="white" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			<%= label_tag(:white, "White") %>
+        			<input type="checkbox" id="pink" name="pink" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			 <%= label_tag(:pink, "Pink") %>
+        			<input type="checkbox" id="denim" name="denim" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			 <%= label_tag(:denim, "Denim") %>
+        			<input type="checkbox" id="leather" name="leather" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			<%= label_tag(:leather, "Leather") %>
+            </p>
+            
+            <p>
+                <b>Tags</b><br />
+                    <input type="checkbox" id="stylish" name="stylish" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			<%= label_tag(:stylish, "Stylish") %>
+        			<input type="checkbox" id="winter" name="winter" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			<%= label_tag(:winter, "Winter") %>
+        			<input type="checkbox" id="casual" name="casual" value="1" <%if @tickAll %> checked=“checked” <%end%> />
+        			<%= label_tag(:casual, "Casual") %>
+            </p>
+              
+              <%= submit_tag("Apply Filters") %>
+              
+            
+        <% end %>
+        
+        
+    </div>
+</div>
+
+
+    
+        <h1><%=@collection%></h1>
+        <% @items.each do |item| %>
+            <div class = "card">
+                <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
+                <small>$<%=item.price%> <br> <%=item.description%></small>
+                
+                <div class = "image-button-container">
+                    <%= link_to(image_tag(item.image, width: 200), show_item_path(:id => item.id)) %>
+                    <div class = "float-btn">
+                        <%= button_to toggle_item_saved_list_path(:id => item.id), method: :post do %>
+                            <%if logged_in? %>
+                                <%if @savedListItems.include? item %>
+                                    <%= image_tag "https://cdn2.iconfinder.com/data/icons/peppyicons/512/heart-512.png", class: "float-img"%>
+                                <%else%>
+                                    <%= image_tag "https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-233_heart_favorite_like-512.png", class: "float-img"%>
+                                <%end%>
+                            <%else%>
+                                <%= image_tag "https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-233_heart_favorite_like-512.png", class: "float-img"%>
+                            <%end%>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+        <%end%>
+        
+<%end%>
+
+<%if @items.count == 0 %>
+<br><br><br>
+<h2>Nothing matching your filters</h2>
+<%end%>

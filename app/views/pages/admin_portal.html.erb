@@ -1,0 +1,34 @@
+<%if current_user %>
+
+<%if current_user.is_admin %>
+
+<h1> Admin Portal </h1>
+<br><br>
+
+<h2>Saved Items Summary</h2>
+<% @sLCountOrderItems.each do |item| %>
+<p> <b>Item name:</b> <%= item.name %> <br><b>Number in saved lists:</b> <%= item.sl_count %></p>
+<%end%>
+
+<h2>Purchased Items Summary</h2>
+<% @pCountOrderItems.each do |item| %>
+<p><b>Item name:</b> <%= item.name %> <br><b>Number purchased:</b> <%= item.purchase_count %></p>
+<%end%>
+
+
+<h2>Customer Ratings Summary</h2>
+<p>Average customer ratings is: <%= @avg_rating %></p>
+
+
+<h2>Newsletter Subscriptions</h2>
+
+
+<%else%>
+<h1>Sorry, this portal is admins only.</h1>
+<%end%>
+
+<%else%>
+
+<h1>Please go back to the homepage</h1>
+
+<%end%>

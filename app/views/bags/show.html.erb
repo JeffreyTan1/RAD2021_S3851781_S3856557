@@ -1,0 +1,99 @@
+<p>You currently have <%=@total_items%> total items and <%=@uniq_items%> types of items.</p>
+
+
+<%if !@items.nil?%>
+        <h1>Your bag</h1>
+        <% @items.each do |item| %>
+            <% @bag_items.each do |bag_item| %>
+                <div class = "card">
+                    <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
+                    <small>$<%=item.price%> <br> <%=item.description%> <br>
+                    Size: <%=bag_item.size%> <br> Color: <%=bag_item.color%> <br>
+                    Quantity: <%=bag_item.quantity%></small>
+                    
+                    <div class = "image-button-container">
+                        <%= link_to(image_tag(item.image, width: 200), show_item_path(:id => item.id)) %>
+                        <div class = "float-btn">
+                            <%= button_to toggle_item_saved_list_path(:id => item.id), method: :post do %>
+                            <%if logged_in? %>
+                                <%if @savedListItems.include? item %>
+                                    <%= image_tag "https://cdn2.iconfinder.com/data/icons/peppyicons/512/heart-512.png", class: "float-img"%>
+                                <%else%>
+                                    <%= image_tag "https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-233_heart_favorite_like-512.png", class: "float-img"%>
+                                <%end%>
+                            <%else%>
+                                <%= image_tag "https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-233_heart_favorite_like-512.png", class: "float-img"%>
+                            <%end%>
+                        <%end%>
+                        </div>
+                    </div>
+                    <%= link_to 'Remove from bag', remv_from_bag_path(:id => item.id), method: :post %>
+                </div>
+            <%end%>
+        <%end%>
+        
+        <form action=<%= checkout_bag_path(:id => current_user.id) %> method = "post">
+            <input type="submit" value="Checkout" />
+        </form>
+<%end%>
+
+<h2><bold>Price: $<%= @price %></bold></h2>
+
+
+<%if @showRating %>
+<h1></h1>
+  <script>window.onload = () => {
+    document.querySelector('[data-target="#exampleModal"]').click();
+  }</script>
+
+
+  <div class="container py-3">
+  
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Reopen Rating Popup
+    </button>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Hey, thanks for shopping at Clothic!
+            <br> <br> Looks like it's you first time here, please consider rating your experience!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <%= form_with url: logged_in? ? add_rating_path_url : new_session_path, method: :post do |f| %>
+                <%= radio_button_tag(:likert, 0) %>
+                <%= label_tag(:likert, "0") %>
+                <%= radio_button_tag(:likert, 1) %>
+                <%= label_tag(:likert, "1") %>
+                <%= radio_button_tag(:likert, 2) %>
+                <%= label_tag(:likert, "2") %>
+                <%= radio_button_tag(:likert, 3) %>
+                <%= label_tag(:likert, "3") %>
+                <%= radio_button_tag(:likert, 4) %>
+                <%= label_tag(:likert, "4") %>
+                <%= radio_button_tag(:likert, 5) %>
+                <%= label_tag(:likert, "5") %>
+                
+                <%= f.submit "Submit Rating" %>
+              <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+<%end%>
+
+
+<br><br><br><br>
+
+<h2 id="notice"><%= notice %></h2>

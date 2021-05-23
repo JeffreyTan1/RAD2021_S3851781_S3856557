@@ -1,0 +1,14 @@
+<h1>Search#searchpage</h1>
+<p>Test page please ignore</p>
+
+<h4>Search box test</h4>
+<%= form_tag(items_path, method: :get) do %>
+<%= text_field_tag(:search, params[:search]) %>
+<%= submit_tag ("Search")%>
+<% end %>
+
+<%= @items.each do |item| %>
+<ul> 
+    <li> <%= link_to item.name, item_path(item) %> </li><br>
+</ul>
+<% end %>

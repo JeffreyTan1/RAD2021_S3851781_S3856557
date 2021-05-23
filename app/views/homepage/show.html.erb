@@ -1,3 +1,62 @@
-<h1>Hi there, welcome to Clothic!</h1>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
 
-<P> We hope you have a wonderful day!</p>
+<%# To render root homepage %>
+<%if !@randItem.nil?%>
+    
+    <h1>Here's an item we think you would like:</h1>
+        <% @randItem.each do |item| %>
+        <div class = "card">
+                <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
+                <small>$<%=item.price%> <br> <%=item.description%></small>
+                
+                <div class = "image-button-container">
+                    <%= link_to(image_tag(item.image, width: 200), show_item_path(:id => item.id)) %>
+                    <div class = "float-btn">
+                        <%= button_to toggle_item_saved_list_path(:id => item.id), method: :post do %>
+                            <%if logged_in? %>
+                                <%if @savedListItems.include? item %>
+                                    <%= image_tag "https://cdn2.iconfinder.com/data/icons/peppyicons/512/heart-512.png", class: "float-img"%>
+                                <%else%>
+                                    <%= image_tag "https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-233_heart_favorite_like-512.png", class: "float-img"%>
+                                <%end%>
+                            <%else%>
+                                <%= image_tag "https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-233_heart_favorite_like-512.png", class: "float-img"%>
+                            <%end%>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+        <%end%>
+    
+    
+        <h1>Popular items in our shop:</h1>
+        <% @popItems.each do |item| %>
+            <div class = "card">
+                <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
+                <small>$<%=item.price%> <br> <%=item.description%></small>
+                
+                <div class = "image-button-container">
+                    <%= link_to(image_tag(item.image, width: 200), show_item_path(:id => item.id)) %>
+                    <div class = "float-btn">
+                        <%= button_to toggle_item_saved_list_path(:id => item.id), method: :post do %>
+                            <%if logged_in? %>
+                                <%if @savedListItems.include? item %>
+                                    <%= image_tag "https://cdn2.iconfinder.com/data/icons/peppyicons/512/heart-512.png", class: "float-img"%>
+                                <%else%>
+                                    <%= image_tag "https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-233_heart_favorite_like-512.png", class: "float-img"%>
+                                <%end%>
+                            <%else%>
+                                <%= image_tag "https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-233_heart_favorite_like-512.png", class: "float-img"%>
+                            <%end%>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+            
+        <%end%>
+<%end%>
+

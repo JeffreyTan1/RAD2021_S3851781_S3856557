@@ -1,0 +1,23 @@
+<h1> Scan your image:</h1>
+
+
+<script>function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#cam-img')
+                    .attr('src', e.target.result)
+                    .width(400)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }</script>
+
+<body>
+  <input type='file' onchange="readURL(this);" />
+    <img id="cam-img" src="#" alt="Scan your image" />
+
+</body>

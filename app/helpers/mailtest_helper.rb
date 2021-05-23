@@ -1,0 +1,2 @@
+module MailtestHelper
+end

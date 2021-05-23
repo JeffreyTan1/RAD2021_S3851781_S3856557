@@ -1,2 +1,74 @@
 @import "bootstrap-sprockets";
-@import "bootstrap.min";
+@import "bootstrap";
+
+.card {
+  background-color: #f5f5f5;
+  padding: 50px;
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 20px;
+  align-content: center;
+}
+
+.bubble {
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 20px;
+}
+
+img.resize {
+    width:540px; 
+    height: auto;
+}
+
+.hello-user {
+  color :white;
+}
+
+
+.image-responsive {
+  width:30px; 
+  height: 30px;
+  background-color: white;
+  padding: 3px;
+}
+
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: gray;
+   color: white;
+   text-align: center;
+}
+
+.image-button-container{
+  position: relative;
+  width: 50%;
+}
+
+.image-button-container .img{
+  
+}
+
+/* Style the button and place it in the middle of the container/image */
+.image-button-container .float-btn {
+  position: absolute;
+  top: 80%;
+  left: 100%;
+  background-color: #555;
+  cursor: pointer;;
+}
+
+.image-button-container .float-btn:hover {
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.image-button-container .float-img {
+ max-width: 15px;
+  max-height: 15px;
+  
+}

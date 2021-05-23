@@ -62,6 +62,7 @@ class PagesController < ApplicationController
         @sLCountOrderItems = Item.order(sl_count: :desc)
         @pCountOrderItems = Item.order(purchase_count: :desc)
         @avg_rating = Rating.average("rating")
+        @subscriptions = Subscription.all()
     end
     
     private

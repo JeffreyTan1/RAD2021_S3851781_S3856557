@@ -21,7 +21,9 @@
 
 
 <h2>Newsletter Subscriptions</h2>
-
+<% @subscriptions.each do |subscription| %>
+<p>Email: <%=subscription.email%></p> <br>
+<%end%>
 
 <%else%>
 <h1>Sorry, this portal is admins only.</h1>

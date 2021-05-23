@@ -10,8 +10,9 @@
 <%# To render root homepage %>
 <%if !@randItem.nil?%>
     
-    <h1>Here's an item we think you would like:</h1>
+    
         <% @randItem.each do |item| %>
+        <h1>From the <%= item.collection %> collection</h1><br>
         <div class = "card">
                 <%= link_to item.name, show_item_path(:id => item.id), method: :get %>
                 <small>$<%=item.price%> <br> <%=item.description%></small>

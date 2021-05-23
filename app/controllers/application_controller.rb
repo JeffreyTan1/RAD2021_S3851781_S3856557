@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   def set_saved_list_items
     if logged_in?
       @savedListItems = current_user.saved_list.items
-      
     end
   end
   
@@ -20,8 +19,6 @@ class ApplicationController < ActionController::Base
   def logged_in?
     current_user
   end
-  
-  
   
   
 end

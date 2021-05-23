@@ -64,8 +64,3 @@ image: "WhiteTShirt.jpg", popularity: 0, collection: "Kids", color1: "White", co
 k6 = Item.create(price: 27.50, name: "Wool Sweater", description: "A cosy knitted wool sweater.",
 image: "YellowWoolSweater.jpg", popularity: 0, collection: "Kids", color1: "Yellow", color2: "Red", color3: "Green", small: 1, medium: 1, large: 0, keyword: "Winter", purchase_count: 0, sl_count: 0)
 
-
-#Users
-
-u1 = User.create(name: "RAD", email: "rad2021rmit@gmail.com", password: "Rails2021", first_checkout: 1, is_admin: 0)
-u2 = User.create(name: "Admin", email: "admin@gmail.com", password: "Rails2021", first_checkout: 1, is_admin: 0)

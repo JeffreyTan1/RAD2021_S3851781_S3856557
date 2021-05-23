@@ -13,9 +13,6 @@ class BagsController < ApplicationController
     else
       @showRating = false
     end
-    puts "in show we have showrating"
-    puts @showRating
-    
     
     @total_items = 0;
     @uniq_items = 0;
